@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luxe Dessert Boutique</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<script>
+  const loggedIn = localStorage.getItem("loggedInUser");
+  if (!loggedIn) {
+    alert("Please log in first.");
+    window.location.href = "login.html";
+  }
+</script>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="spinner"></div>
+</div>
+
+<nav class="navbar navbar-expand-lg luxe-navbar rounded-bottom-glass px-4 py-3 shadow-lg position-fixed top-0 start-50 translate-middle-x">
+  <div class="container-fluid justify-content-between">
+    <a class="navbar-brand d-flex align-items-center gap-3 text-gold fw-bold" href="index.html" style="font-family: 'Playfair Display', serif; font-size: 1.8rem;">
+      <img src="images/logo.png" alt="Luxe Logo" width="48" height="48" class="rounded-circle shadow-sm" />
+      <span class="brand-name">Luxe Dessert</span>
+    </a>
+
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav gap-4 align-items-center">
+        <li class="nav-item"><a class="nav-link nav-hover" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-hover" href="products.html">Menu</a></li>
+        <li class="nav-item"><a class="nav-link nav-hover" href="cart.html">Cart</a></li>
+        <li class="nav-item"><a class="nav-link nav-hover" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="javascript:void(0);" onclick="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero d-flex align-items-center text-center text-white">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Indulge in Sweet Luxury</h1>
+    <p class="lead">Elegant pastries, dreamy drinks, and handcrafted desserts</p>
+    <a href="products.html" class="btn btn-gold mt-3">Shop the Collection</a>
+  </div>
+</header>
+
+<!-- Featured Items -->
+<section class="container text-center my-5">
+  <h2 class="section-title">Signature Creations</h2>
+  <div class="row mt-4">
+    <div class="col-md-4 fade-in">
+      <img src="images/macaron.png" class="img-fluid rounded" alt="Macarons">
+      <h4 class="mt-3">Rose Gold Macarons</h4>
+      <p>Delicate, luxurious, and unforgettable.</p>
+    </div>
+    <div class="col-md-4 fade-in">
+      <img src="images/icedcoffee.png" class="img-fluid rounded" alt="Iced Coffee">
+      <h4 class="mt-3">Velvet Iced Coffee</h4>
+      <p>Chill, smooth, and infused with caramel magic.</p>
+    </div>
+    <div class="col-md-4 fade-in">
+      <img src="images/cupcake.png" class="img-fluid rounded" alt="Cupcake">
+      <h4 class="mt-3">Champagne Cupcakes</h4>
+      <p>Infused with elegance and sparkling joy.</p>
+    </div>
+  </div>
+</section>
+
+<section class="container my-5" id="feedbackDisplaySection">
+  <h3 class="text-center section-title">What Customers Say</h3>
+  <div id="feedbackList" class="mt-4 text-center"></div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black text-white pt-5 pb-4 mt-auto">
+  <div class="container text-center">
+
+    <!-- Newsletter -->
+    <div class="mb-4">
+      <h5 class="text-gold">Subscribe to Our Newsletter</h5>
+    <form id="subscribeForm" class="d-flex justify-content-center mt-3" novalidate>
+      <input type="email" id="subscribeEmail" class="form-control w-50 me-2" placeholder="Enter your email" required>
+      <button type="submit" class="btn btn-gold">Subscribe</button>
+    </form>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="mb-3 social-icons">
+      <a href="https://facebook.com" target="_blank" class="text-white me-3" title="Facebook"><i class="bi bi-facebook fs-4"></i></a>
+      <a href="https://instagram.com" target="_blank" class="text-white me-3" title="Instagram"><i class="bi bi-instagram fs-4"></i></a>
+    </div>
+
+    <!-- Copyright -->
+    <p class="mb-0">&copy; 2025 Luxe Dessert Boutique — Sweet Luxury in Every Bite</p>
+    <div class="mt-4">
+      <a href="javascript:void(0);" onclick="scrollToTop()" class="back-to-top">Back to Top ↑</a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Floating Feedback Icon and Box -->
+<div id="feedbackWrapper">
+  <a href="javascript:void(0);" id="feedbackToggle" class="chat-icon" title="Feedback">
+    <i class="bi bi-chat-dots-fill"></i>
+  </a>
+
+  <div id="feedbackBox" class="feedback-container" style="display: none;">
+    <div class="feedback-header">We value your feedback</div>
+    <p class="text-center">How satisfied are you with Luxe Dessert Boutique?</p>
+    <div class="emoji-rating d-flex justify-content-center mb-2" id="emojiRating">
+      <span data-rating="1" title="⭐ – 20%">⭐</span>
+      <span data-rating="2" title="⭐ – 40%">⭐</span>
+      <span data-rating="3" title="⭐ – 60%">⭐</span>
+      <span data-rating="4" title="⭐ – 80%">⭐</span>
+      <span data-rating="5" title="⭐ – 100%">⭐</span>
+    </div>
+    <textarea id="emojiFeedbackMessage" class="form-control mb-2" placeholder="Write your thoughts..."></textarea>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-gold" onclick="submitEmojiFeedback()">Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modals -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form class="p-3 needs-validation" novalidate>
+        <h5 class="modal-title mb-3">Login</h5>
+        <input type="email" class="form-control mb-2" placeholder="Email" required>
+        <input type="password" class="form-control mb-3" placeholder="Password" required>
+        <button type="submit" class="btn btn-gold w-100">Log In</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="signupModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form class="p-3 needs-validation" novalidate>
+        <h5 class="modal-title mb-3">Sign Up</h5>
+        <input type="text" class="form-control mb-2" placeholder="Full Name" required>
+        <input type="email" class="form-control mb-2" placeholder="Email" required>
+        <input type="password" class="form-control mb-3" placeholder="Password" required>
+        <button type="submit" class="btn btn-gold w-100">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+
+<!-- Logout Loading Overlay -->
+<div id="logoutLoader" class="logout-overlay" style="display: none;">
+  <div class="spinner-border text-light" role="status" style="width: 3rem; height: 3rem;">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <p class="mt-3 text-white">Logging you out...</p>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const subscribeForm = document.getElementById("subscribeForm");
+
+    if (subscribeForm) {
+      subscribeForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const emailInput = document.getElementById("subscribeEmail");
+        const email = emailInput.value.trim();
+
+        if (!email || !emailInput.checkValidity()) {
+          emailInput.classList.add("is-invalid");
+          return;
+        }
+
+        // Reset field and show notification
+        emailInput.classList.remove("is-invalid");
+        subscribeForm.reset();
+        showNotification("Thank you for subscribing to our newsletter!");
+      });
+    }
+  });
+</script>
+
+<div id="notification" class="notification-box" style="display: none;"></div>
+
+</body>
+</html>
